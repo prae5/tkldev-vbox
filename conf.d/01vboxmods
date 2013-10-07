@@ -22,8 +22,11 @@ DEBIAN_FRONTEND=noninteractive apt-get -y \
      -t wheezy-backports install virtualbox virtualbox-dkms
 
 # Install VirtualBox extention pack
-VBoxManage list extpacks
 VBoxManage extpack install /root/Oracle_VM_VirtualBox_Extension_Pack-4.0.18-82821.vbox-extpack
-VBoxManage list extpacks
+#VBoxManage list extpacks
+rm /root/Oracle_VM_VirtualBox_Extension_Pack-4.0.18-82821.vbox-extpack
+
+chmod a+x /sbin/testvm
+
 
 

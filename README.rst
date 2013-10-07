@@ -1,3 +1,24 @@
+MODIFIED By Paul Rae
+=========================================================
+Git Repo: https://github.com/prae5/tkldev
+Website: http://www.paulrae.com
+=========================================================
+
+Modified version of TurnKey Linux's TKLDev Appliance
+
+Adds support for testing newly built ISO's in VirtualBox. 
+
+After building iso run:
+
+testvm build/product.iso
+
+This will lauch iso in a virtualbox inastance. You can connect
+to this virtualbox instance using RDP. 
+
+
+
+---------------------------------------------------------
+
 TKLDev - Appliance Development Toolchain and Build System
 =========================================================
 
