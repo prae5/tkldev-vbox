@@ -1,0 +1,29 @@
+#!/bin/bash -e
+
+# add debian backbports repor for updated virtualbox packages
+cat >>  /etc/apt/sources.list.d/debian-backports.list <<EOF
+# Backported packages for Debian 6.0 "Squeeze"
+deb http://http.debian.net/debian-backports/ squeeze-backports main
+EOF
+
+apt-get update
+
+
+# Install Virtualbox & Kernel Headers
+DEBIAN_FRONTEND=noninteractive apt-get -y \
+    -o DPkg::Options::=--force-confdef \
+    -o DPkg::Options::=--force-confold \
+    install build-essential linux-headers-`uname -r` linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,')
+
+
+DEBIAN_FRONTEND=noninteractive apt-get -y \
+    -o DPkg::Options::=--force-confdef \
+    -o DPkg::Options::=--force-confold \
+     -t wheezy-backports install virtualbox virtualbox-dkms
+
+# Install VirtualBox extention pack
+VBoxManage list extpacks
+VBoxManage extpack install /root/Oracle_VM_VirtualBox_Extension_Pack-4.0.18-82821.vbox-extpack
+VBoxManage list extpacks
+
+
